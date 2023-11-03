@@ -31,8 +31,8 @@ public class DialogueChoices : MonoBehaviour
 
     }
 
-    void PlayerSpeech(string s) //Called when player clicks on button. The string should be choices[0 or 1],
-        //of course depending on what the player chose
+    public void PlayerSpeech(int i) //Called when player clicks on button. The int is the index of the choice, so either
+        //0 or 1
     {
 
     }
