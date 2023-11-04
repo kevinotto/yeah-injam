@@ -13,7 +13,7 @@ public class DialogueChoices : MonoBehaviour
     public TextMeshProUGUI enemyText;
 
     public List<Prompt> friendPrompts;
-    public int pIndex; //prompt index, for instance, friendPrompts[0] would be pIndex = 0
+    public int pIndex = 0; //prompt index, for instance, friendPrompts[0] would be pIndex = 0
     public int exchanges; //Amount of exchanges since initial message
     public int totalExc; //The total amount of exchanges
 
@@ -76,6 +76,7 @@ public class DialogueChoices : MonoBehaviour
 
     IEnumerator EnemySpeech() //Called after player responds
     {
+        yield return new WaitForSeconds(0.05f);
         if (pIndex > 0)
         {
             yield return new WaitForSeconds(2);
