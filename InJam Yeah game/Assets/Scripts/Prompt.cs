@@ -7,16 +7,12 @@ public class Prompt
 {
     public string question;
     public string answerOne;
-    public Prompt answerOnePrompt; //question to be asked if player chooses answer one
     public string answerTwo;
-    public Prompt answerTwoPrompt;
-    public int level; //The level of the character (1-3)
 
-    public Prompt(string question, string answerOne, string answerTwo, int level)
+    public Prompt(string question, string answerOne, string answerTwo)
     {
         this.question = question;
         this.answerOne = answerOne;
         this.answerTwo = answerTwo;
-        this.level = level;
     }
 }

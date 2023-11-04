@@ -12,8 +12,8 @@ public class DialogueChoices : MonoBehaviour
     public GameObject enemyChatBox; //Just calling the second texter the enemy for convenience
     public TextMeshProUGUI enemyText;
 
-    public List<Prompt> kendrickPrompts;
-    public int pIndex; //prompt index, for instance, kendrickPrompts[0] would be pIndex = 0
+    public List<Prompt> friendPrompts;
+    public int pIndex; //prompt index, for instance, friendPrompts[0] would be pIndex = 0
 
     public TextMeshProUGUI choiceOneText;
     public TextMeshProUGUI choiceTwoText;
@@ -23,7 +23,7 @@ public class DialogueChoices : MonoBehaviour
     private void Start()
     {
         //Enemy initiates talking
-        kendrickPrompts = GameObject.Find("Player").GetComponent<PromptList>().kendrickPrompts;
+        friendPrompts = GameObject.Find("Player").GetComponent<PromptList>().friendPrompts;
         pIndex = 0;
         StartCoroutine("EnemySpeech");
         choiceOne.SetActive(false); 
@@ -32,30 +32,37 @@ public class DialogueChoices : MonoBehaviour
 
     void GiveChoices() //Give the player choices
     {
-
         choiceOne.SetActive(true);
         choiceTwo.SetActive(true);
-        choiceOneText.SetText(kendrickPrompts[pIndex].answerOne);
-        choiceTwoText.SetText(kendrickPrompts[pIndex].answerTwo);
+        choiceOneText.SetText(friendPrompts[pIndex].answerOne);
+        choiceTwoText.SetText(friendPrompts[pIndex].answerTwo);
     }
 
     public void PlayerSpeech(int i) //Called when player clicks on button. The int is the index of the choice, so either
         //0 or 1
     {
-        switch (i)
+        if (pIndex == 0)
         {
-            case 0:
-                playerText.SetText(kendrickPrompts[pIndex].answerOne);
-                pIndex += 1; //Good answer
-                break;
-            case 1:
-                playerText.SetText(kendrickPrompts[pIndex].answerTwo);
-                pIndex += 2; //Bad answer. Bad answers are always even numbers, good ones always odd
-                break;
+            switch (i)
+            {
+                case 0:
+                    playerText.SetText(friendPrompts[pIndex].answerOne);
+                    pIndex += 1; //Good answer
+                    break;
+                case 1:
+                    playerText.SetText(friendPrompts[pIndex].answerTwo);
+                    pIndex += 2; //Bad answer. Bad answers are always even numbers, good ones always odd
+                    break;
+            }
+        }
+        else
+        {
+            pIndex = 3;
         }
 
         choiceOne.SetActive(false);
         choiceTwo.SetActive(false);
+        GameObject.Find("PlayerSprite").GetComponent<AudioSource>().Play();
 
         StartCoroutine("EnemySpeech");
     }
@@ -66,7 +73,9 @@ public class DialogueChoices : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
         }
-        enemyText.SetText(kendrickPrompts[pIndex].question);
+        enemyText.SetText(friendPrompts[pIndex].question);
+        GameObject.Find("EnemySprite").GetComponent<AudioSource>().Play();
+
 
         yield return new WaitForSeconds(1.5f);
         //Give player choices
