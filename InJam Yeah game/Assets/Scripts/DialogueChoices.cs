@@ -50,10 +50,12 @@ public class DialogueChoices : MonoBehaviour
                 case 0:
                     playerText.SetText(friendPrompts[pIndex].answerOne);
                     pIndex += 1; //Good answer
+                    GameObject.Find("PlayerChoiceOne").GetComponent<Animator>().SetTrigger("Click");
                     break;
                 case 1:
                     playerText.SetText(friendPrompts[pIndex].answerTwo);
                     pIndex += 2; //Bad answer. Bad answers are always even numbers, good ones always odd
+                    GameObject.Find("PlayerChoiceTwo").GetComponent<Animator>().SetTrigger("Click");
                     break;
             }
             exchanges += 1;
