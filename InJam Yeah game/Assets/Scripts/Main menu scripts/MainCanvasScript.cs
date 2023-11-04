@@ -9,6 +9,8 @@ public class MainCanvasScript : MonoBehaviour
     public GameObject AboutCanvas;
     public GameObject QuitCanvas;
 
+    public AudioSource MouseClick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,23 +27,27 @@ public class MainCanvasScript : MonoBehaviour
 
     public void PlayButton()
     {
+        MouseClick.Play();
         Application.LoadLevel("GameLevel");
     }
 
     public void AboutButton()
     {
+        MouseClick.Play();
         MainCanvas.SetActive(false);
         AboutCanvas.SetActive(true);
     }
 
     public void QuitButton()
     {
+        MouseClick.Play();
         MainCanvas.SetActive(false);
         QuitCanvas.SetActive(true);
     }
 
     public void BackMenuButton()
     {
+        MouseClick.Play();
         MainCanvas.SetActive(true);
         AboutCanvas.SetActive(false);
     }
