@@ -14,6 +14,8 @@ public class DialogueChoices : MonoBehaviour
 
     public List<Prompt> friendPrompts;
     public int pIndex; //prompt index, for instance, friendPrompts[0] would be pIndex = 0
+    public int exchanges; //Amount of exchanges since initial message
+    public int totalExc; //The total amount of exchanges
 
     public TextMeshProUGUI choiceOneText;
     public TextMeshProUGUI choiceTwoText;
@@ -41,7 +43,7 @@ public class DialogueChoices : MonoBehaviour
     public void PlayerSpeech(int i) //Called when player clicks on button. The int is the index of the choice, so either
         //0 or 1
     {
-        if (pIndex == 0)
+        if (exchanges < 2)
         {
             switch (i)
             {
@@ -54,11 +56,16 @@ public class DialogueChoices : MonoBehaviour
                     pIndex += 2; //Bad answer. Bad answers are always even numbers, good ones always odd
                     break;
             }
+            exchanges += 1;
         }
         else
         {
-            pIndex = 3;
+            totalExc = exchanges + 1;
+            exchanges = 0;
+            pIndex = totalExc;
+            Debug.Log("RESET!");
         }
+        Debug.Log(exchanges.ToString());
 
         choiceOne.SetActive(false);
         choiceTwo.SetActive(false);
