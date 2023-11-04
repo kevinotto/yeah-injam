@@ -1212,6 +1212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602672039}
   - component: {fileID: 1602672040}
+  - component: {fileID: 1602672041}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1250,10 +1251,23 @@ MonoBehaviour:
   playerText: {fileID: 618245598}
   enemyChatBox: {fileID: 736553010}
   enemyText: {fileID: 1810626000}
-  choiceOne: {fileID: 1445830295}
+  pIndex: 0
   choiceOneText: {fileID: 1109298593}
-  choiceTwo: {fileID: 528975326}
   choiceTwoText: {fileID: 2043041016}
+  choiceOne: {fileID: 1445830295}
+  choiceTwo: {fileID: 528975326}
+--- !u!114 &1602672041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602672038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0132a6ef2aa6b2542a79fe30b4389108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1637522040
 GameObject:
   m_ObjectHideFlags: 0
